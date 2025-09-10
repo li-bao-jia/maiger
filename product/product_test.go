@@ -81,3 +81,16 @@ func TestGoodsDetail(t *testing.T) {
 	}
 	fmt.Println("GoodsPage:", detailResp.Data)
 }
+
+// 测试 4.5 获取商品描述
+
+func TestGoodsDetailSpec(t *testing.T) {
+	detailSpecResp, err := goodsService.GoodsDetailSpec(ctx, accessToken, &GoodsDetailSpecRequest{
+		GoodsId: "0d0189c1-e062-4ffa-9db0-b8c6e42549f3",
+	})
+
+	if err != nil {
+		t.Fatalf("GoodsDetailSpec error: %v", err)
+	}
+	fmt.Println("GoodsDetailSpec:", detailSpecResp.Data)
+}
