@@ -48,3 +48,21 @@ func TestCategoryPage(t *testing.T) {
 	}
 	fmt.Println("CategoryPage:", categoryResp.Data.Categories)
 }
+
+// 测试 4.3 查询商品列表
+
+func TestGoodsPage(t *testing.T) {
+	goodsResp, err := goodsService.GoodsPage(ctx, accessToken, &GoodsPageRequest{
+		Lang:      "中文",
+		PageNum:   2,
+		PageSize:  100,
+		CatId:     "",
+		BrandId:   "",
+		GoodsName: "",
+	})
+
+	if err != nil {
+		t.Fatalf("GoodsPage error: %v", err)
+	}
+	fmt.Println("GoodsPage:", goodsResp.Data.Products)
+}
