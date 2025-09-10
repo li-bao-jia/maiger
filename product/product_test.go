@@ -66,3 +66,18 @@ func TestGoodsPage(t *testing.T) {
 	}
 	fmt.Println("GoodsPage:", goodsResp.Data.Products)
 }
+
+// 测试 4.4 查询商品详情
+
+func TestGoodsDetail(t *testing.T) {
+	detailResp, err := goodsService.GoodsDetail(ctx, accessToken, &GoodsDetailRequest{
+		Lang:    "中文",
+		SkuId:   "",
+		GoodsId: "0d0189c1-e062-4ffa-9db0-b8c6e42549f3",
+	})
+
+	if err != nil {
+		t.Fatalf("GoodsPage error: %v", err)
+	}
+	fmt.Println("GoodsPage:", detailResp.Data)
+}
