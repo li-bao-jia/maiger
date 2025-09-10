@@ -33,3 +33,18 @@ func TestBrandPage(t *testing.T) {
 	}
 	fmt.Println("BrandPage:", brandResp.Data.Brands)
 }
+
+// 测试 4.2 查询分类列表
+
+func TestCategoryPage(t *testing.T) {
+	categoryResp, err := goodsService.CategoryPage(ctx, accessToken, &CategoryPageRequest{
+		Lang:     "中文",
+		PageNum:  2,
+		PageSize: 20,
+		ParentId: "",
+	})
+	if err != nil {
+		t.Fatalf("CategoryPage error: %v", err)
+	}
+	fmt.Println("CategoryPage:", categoryResp.Data.Categories)
+}
