@@ -120,3 +120,16 @@ func TestGoodsPriceStock(t *testing.T) {
 	}
 	fmt.Println("GoodsPriceStock:", goodsPriceStockResp.Data)
 }
+
+// 测试 4.8 查询全量分类信息
+
+func TestCategoryAll(t *testing.T) {
+	categoryAllResp, err := goodsService.CategoryAll(ctx, accessToken, &CategoryAllRequest{
+		Lang: "中文",
+	})
+
+	if err != nil {
+		t.Fatalf("CategoryAll error: %v", err)
+	}
+	fmt.Println("CategoryAll:", categoryAllResp.Data)
+}
