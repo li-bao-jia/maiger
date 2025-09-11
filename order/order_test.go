@@ -168,3 +168,16 @@ func TestCheckAreaLimit(t *testing.T) {
 	}
 	fmt.Println("CheckAreaLimit:", checkAreaLimitResp.Data)
 }
+
+// 测试 5.14 主订单查询详情
+
+func TestBoDetail(t *testing.T) {
+	boDetailResp, err := orderService.BoDetail(ctx, accessToken, &BoDetailRequest{
+		BlanketOrderSn: "25082918411684343910",
+	})
+
+	if err != nil {
+		t.Fatalf("BoDetail error: %v", err)
+	}
+	fmt.Println("BoDetail:", boDetailResp.Data)
+}
