@@ -30,6 +30,19 @@ func TestTrack(t *testing.T) {
 	fmt.Println("Track:", trackResp.Data)
 }
 
+// 测试 5.7 订单详情
+
+func TestDetail(t *testing.T) {
+	detailResp, err := orderService.Detail(ctx, accessToken, &DetailRequest{
+		OrderSn: "25082918411684343910",
+	})
+
+	if err != nil {
+		t.Fatalf("Detail error: %v", err)
+	}
+	fmt.Println("Detail:", detailResp.Data)
+}
+
 // 测试 5.8 订单状态查询
 
 func TestStatus(t *testing.T) {
