@@ -17,6 +17,18 @@ var (
 	orderService = NewOrderService(httpClient)
 )
 
+// 测试 5.4 确认收货
+func TestConfirm(t *testing.T) {
+	confirmResp, err := orderService.Confirm(ctx, accessToken, &ConfirmRequest{
+		OrderSn: "25082918411684343910",
+	})
+
+	if err != nil {
+		t.Fatalf("Confirm error: %v", err)
+	}
+	fmt.Println("Confirm:", confirmResp.Data)
+}
+
 // 测试 5.6 查询订单配送信息
 
 func TestTrack(t *testing.T) {
