@@ -56,6 +56,19 @@ func TestStatus(t *testing.T) {
 	fmt.Println("Status:", statusResp.Data)
 }
 
+// 测试 5.9 查看虚拟订单卡券、卡密
+
+func TestCardNumber(t *testing.T) {
+	cardNumberResp, err := orderService.CardNumber(ctx, accessToken, &CardNumberRequest{
+		OrderSn: "25082918411684343910",
+	})
+
+	if err != nil {
+		t.Fatalf("CardNumber error: %v", err)
+	}
+	fmt.Println("CardNumber:", cardNumberResp.Data)
+}
+
 // 测试 5.10 根据物流公司和物流单号查询配送信息
 
 func TestTrackDelivery(t *testing.T) {
