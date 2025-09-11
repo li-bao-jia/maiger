@@ -29,6 +29,19 @@ func TestConfirm(t *testing.T) {
 	fmt.Println("Confirm:", confirmResp.Data)
 }
 
+// 测试 5.5 批量确认收货
+
+func TestConfirmBatch(t *testing.T) {
+	confirmBatchResp, err := orderService.ConfirmBatch(ctx, accessToken, &[]string{
+		"25082918411684343910",
+	})
+
+	if err != nil {
+		t.Fatalf("ConfirmBatch error: %v", err)
+	}
+	fmt.Println("ConfirmBatch:", confirmBatchResp.Data)
+}
+
 // 测试 5.6 查询订单配送信息
 
 func TestTrack(t *testing.T) {
