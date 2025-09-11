@@ -94,3 +94,16 @@ func TestGoodsDetailSpec(t *testing.T) {
 	}
 	fmt.Println("GoodsDetailSpec:", detailSpecResp.Data)
 }
+
+// 测试 4.6 查询区域信息
+
+func TestRegion(t *testing.T) {
+	regionResp, err := goodsService.Region(ctx, accessToken, &RegionRequest{
+		ParentId: 1,
+	})
+
+	if err != nil {
+		t.Fatalf("Region error: %v", err)
+	}
+	fmt.Println("Region:", regionResp.Data)
+}
