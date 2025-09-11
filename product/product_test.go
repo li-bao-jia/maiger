@@ -149,3 +149,16 @@ func TestJdPrice(t *testing.T) {
 	}
 	fmt.Println("JdPrice:", jdPriceResp.Data)
 }
+
+// 测试 4.10 查询相似商品
+
+func TestSimilar(t *testing.T) {
+	similarResp, err := goodsService.Similar(ctx, accessToken, &SimilarRequest{
+		SkuId: "4575b922-0e8a-484d-908e-63e49c63755b",
+	})
+
+	if err != nil {
+		t.Fatalf("Similar error: %v", err)
+	}
+	fmt.Println("Similar:", similarResp.Data)
+}
