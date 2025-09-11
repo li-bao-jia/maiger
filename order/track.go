@@ -33,6 +33,10 @@ type TrackResult struct {
 
 // 5.6 查询订单配送信息
 
+// 订单发货后，可以通过查询订单配送信息接口，获取订单配送信息以及物流轨迹。只支持查询2个月内的订单配送信息。
+// 获取返回结果时 先判断HTTP请求状态码在判断业务返回编码。
+// 成功条件: HTTP请求状态码为200并且code为100时成功。
+
 func (o *OrderService) Track(ctx context.Context, token string, req *TrackRequest) (resp *TrackResponse, err error) {
 	err = o.http.DoAuthQuery(ctx, "GET", "/open/api/order/queryOrderTrack", token, req, &resp)
 
