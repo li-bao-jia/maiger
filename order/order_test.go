@@ -17,6 +17,19 @@ var (
 	orderService = NewOrderService(httpClient)
 )
 
+// 测试 5.2 订单支付
+
+func TestPay(t *testing.T) {
+	payResp, err := orderService.Pay(ctx, accessToken, &PayRequest{
+		ThirdOrder: "SN202509100000001",
+	})
+
+	if err != nil {
+		t.Fatalf("Pay error: %v", err)
+	}
+	fmt.Println("Pay:", payResp.Data)
+}
+
 // 测试 5.3 取消未支付订单
 
 func TestCancel(t *testing.T) {
