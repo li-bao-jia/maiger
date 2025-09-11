@@ -17,7 +17,7 @@ var (
 	messageService = NewMessageService(httpClient)
 )
 
-// 测试 8.1 消息通知查询接口
+// 测试 8.1 消息通知查询接口 v3 版本
 
 func TestQuery(t *testing.T) {
 	queryResp, err := messageService.Query(ctx, accessToken, &QueryRequest{
