@@ -133,3 +133,22 @@ func TestTrackDelivery(t *testing.T) {
 	}
 	fmt.Println("TrackDelivery:", trackDeliveryResp.Data)
 }
+
+// 测试 5.12 运费查询
+
+func TestFreight(t *testing.T) {
+	freightResp, err := orderService.Freight(ctx, accessToken, &FreightRequest{
+		Address: "黑龙江省哈尔滨市松北区松北大道冰雪大世界",
+		SkuIdList: []SkuIdList{
+			{
+				SkuId:    "2a2e54bd-389c-4bf2-945b-312fa9099f35",
+				Quantity: 1,
+			},
+		},
+	})
+
+	if err != nil {
+		t.Fatalf("Freight error: %v", err)
+	}
+	fmt.Println("Freight:", freightResp.Data)
+}
