@@ -71,6 +71,10 @@ type QueryContent struct {
 
 // 8.1 消息通知查询接口
 
+// 每次查询最多返回100条数据
+// 数据最多保留60天
+// 查询成功默认消息已经处理
+
 func (m *MessageService) Query(ctx context.Context, token string, req *QueryRequest) (resp *QueryResponse, err error) {
 	err = m.http.DoAuthJSON(ctx, "POST", "/open/api/message/query/notify/statusQuery", token, req, &resp)
 
