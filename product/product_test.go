@@ -73,13 +73,13 @@ func TestGoodsDetail(t *testing.T) {
 	detailResp, err := goodsService.GoodsDetail(ctx, accessToken, &GoodsDetailRequest{
 		Lang:    "中文",
 		SkuId:   "",
-		GoodsId: "0d0189c1-e062-4ffa-9db0-b8c6e42549f3",
+		GoodsId: "57c6e274-b882-4241-b3ab-3d5a754d997c",
 	})
 
 	if err != nil {
-		t.Fatalf("GoodsPage error: %v", err)
+		t.Fatalf("GoodsDetail error: %v", err)
 	}
-	fmt.Println("GoodsPage:", detailResp.Data)
+	fmt.Println("GoodsDetail:", detailResp.Data)
 }
 
 // 测试 4.5 获取商品描述
