@@ -55,3 +55,16 @@ func TestDelete(t *testing.T) {
 	}
 	fmt.Println("Delete:", deleteResp.Data)
 }
+
+// 测试 9.2 删除推送消息 v4 版本
+
+func TestDeleteV4(t *testing.T) {
+	deleteResp, err := messageService.DeleteV4(ctx, accessToken, &DeleteV4Request{
+		Ids: []string{"c79670e6-8003-4520-8956-b14af62d89bb", "c79670e6-8003-4520-8956-b14af62d89bb"},
+	})
+
+	if err != nil {
+		t.Fatalf("Delete error: %v", err)
+	}
+	fmt.Println("Delete:", deleteResp.Data)
+}
