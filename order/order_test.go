@@ -30,6 +30,19 @@ func TestTrack(t *testing.T) {
 	fmt.Println("Track:", trackResp.Data)
 }
 
+// 测试 5.8 订单状态查询
+
+func TestStatus(t *testing.T) {
+	statusResp, err := orderService.Status(ctx, accessToken, &[]string{
+		"25082918411684343910",
+	})
+
+	if err != nil {
+		t.Fatalf("Status error: %v", err)
+	}
+	fmt.Println("Status:", statusResp.Data)
+}
+
 // 测试 5.10 根据物流公司和物流单号查询配送信息
 
 func TestTrackDelivery(t *testing.T) {
