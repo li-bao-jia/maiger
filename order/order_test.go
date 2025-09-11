@@ -152,3 +152,19 @@ func TestFreight(t *testing.T) {
 	}
 	fmt.Println("Freight:", freightResp.Data)
 }
+
+// 测试 5.13 查询商品区域限制
+
+func TestCheckAreaLimit(t *testing.T) {
+	checkAreaLimitResp, err := orderService.CheckAreaLimit(ctx, accessToken, &CheckAreaLimitRequest{
+		Address: "黑龙江省哈尔滨市松北区松北大道冰雪大世界",
+		SkuIds: []string{
+			"2a2e54bd-389c-4bf2-945b-312fa9099f35",
+		},
+	})
+
+	if err != nil {
+		t.Fatalf("CheckAreaLimit error: %v", err)
+	}
+	fmt.Println("CheckAreaLimit:", checkAreaLimitResp.Data)
+}
