@@ -29,3 +29,16 @@ func TestQuery(t *testing.T) {
 	}
 	fmt.Println("Query:", queryResp.Data)
 }
+
+// 测试 8.2 消息通知查询接口 v4 版本
+
+func TestQueryV4(t *testing.T) {
+	queryResp, err := messageService.QueryV4(ctx, accessToken, &QueryV4Request{
+		QueryType: "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+	})
+
+	if err != nil {
+		t.Fatalf("Query error: %v", err)
+	}
+	fmt.Println("Query:", queryResp.Data)
+}
