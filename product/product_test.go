@@ -107,3 +107,16 @@ func TestRegion(t *testing.T) {
 	}
 	fmt.Println("Region:", regionResp.Data)
 }
+
+// 测试 4.7 批量查询价格库存
+
+func TestGoodsPriceStock(t *testing.T) {
+	goodsPriceStockResp, err := goodsService.GoodsPriceStock(ctx, accessToken, &GoodsPriceStockRequest{
+		SkuIds: []string{"2a2e54bd-389c-4bf2-945b-312fa9099f35"},
+	})
+
+	if err != nil {
+		t.Fatalf("GoodsPriceStock error: %v", err)
+	}
+	fmt.Println("GoodsPriceStock:", goodsPriceStockResp.Data)
+}
