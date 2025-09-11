@@ -17,6 +17,19 @@ var (
 	orderService = NewOrderService(httpClient)
 )
 
+// 测试 5.3 取消未支付订单
+
+func TestCancel(t *testing.T) {
+	cancelResp, err := orderService.Cancel(ctx, accessToken, &CancelRequest{
+		ThirdOrder: "SN202509100000001",
+	})
+
+	if err != nil {
+		t.Fatalf("Cancel error: %v", err)
+	}
+	fmt.Println("Cancel:", cancelResp.Data)
+}
+
 // 测试 5.4 确认收货
 func TestConfirm(t *testing.T) {
 	confirmResp, err := orderService.Confirm(ctx, accessToken, &ConfirmRequest{
