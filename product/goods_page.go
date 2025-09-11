@@ -2,8 +2,6 @@ package product
 
 import (
 	"context"
-	"fmt"
-	"net/url"
 )
 
 type GoodsPageRequest struct {
@@ -43,21 +41,7 @@ type Product struct {
 // 4.3 查询商品列表(需注意，此接口按SKU纬度返回的数据)
 
 func (s *GoodsService) GoodsPage(ctx context.Context, token string, req *GoodsPageRequest) (resp *GoodsPageResponse, err error) {
-	p := map[string]interface{}{
-		"lang":      req.Lang,
-		"pageNum":   req.PageNum,
-		"pageSize":  req.PageSize,
-		"goodsName": req.GoodsName,
-		"brandId":   req.BrandId,
-		"catId":     req.CatId,
-	}
-
-	values := url.Values{}
-	for k, v := range p {
-		values.Add(k, fmt.Sprint(v))
-	}
-
-	err = s.http.DoAuthForm(ctx, "POST", "/open/api/product/goods/findGoodsPage", token, values, &resp)
+	err = s.http.DoAuthForm(ctx, "POST", "/open/api/product/goods/findGoodsPage", token, req, &resp)
 
 	return resp, err
 }

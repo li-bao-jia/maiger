@@ -2,8 +2,6 @@ package product
 
 import (
 	"context"
-	"fmt"
-	"net/url"
 )
 
 type GoodsDetailSpecRequest struct {
@@ -34,16 +32,7 @@ type GoodsDescSpecGallery struct {
 // 4.5 查询商品描述
 
 func (s *GoodsService) GoodsDetailSpec(ctx context.Context, token string, req *GoodsDetailSpecRequest) (resp *GoodsDetailSpecResponse, err error) {
-	p := map[string]interface{}{
-		"goodsId": req.GoodsId,
-	}
-
-	values := url.Values{}
-	for k, v := range p {
-		values.Add(k, fmt.Sprint(v))
-	}
-
-	err = s.http.DoAuthQuery(ctx, "GET", "/open/api/product/goods/findDetailSpec", token, values, &resp)
+	err = s.http.DoAuthQuery(ctx, "GET", "/open/api/product/goods/findDetailSpec", token, req, &resp)
 
 	return resp, err
 }

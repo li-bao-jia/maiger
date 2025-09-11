@@ -21,11 +21,16 @@ func NewHTTPClient(baseURL string) *HttpClient {
 	}
 }
 
-func (h *HttpClient) DoAuthQuery(ctx context.Context, method, path, token string, query url.Values, resp interface{}) error {
+func (h *HttpClient) DoAuthQuery(ctx context.Context, method, path, token string, data interface{}, resp interface{}) error {
+	values, err := h.structToValues(data)
+	if err != nil {
+		return err
+	}
+
 	// 拼接 URL，如果有 query 参数
 	fullURL := h.baseURL + path
-	if len(query) > 0 {
-		fullURL += "?" + query.Encode()
+	if len(values) > 0 {
+		fullURL += "?" + values.Encode()
 	}
 
 	// 创建请求，body 为 nil
@@ -41,8 +46,13 @@ func (h *HttpClient) DoAuthQuery(ctx context.Context, method, path, token string
 	return h.send(req, resp)
 }
 
-func (h *HttpClient) DoAuthForm(ctx context.Context, method, path, token string, data url.Values, resp interface{}) error {
-	req, err := http.NewRequestWithContext(ctx, method, h.baseURL+path, strings.NewReader(data.Encode()))
+func (h *HttpClient) DoAuthForm(ctx context.Context, method, path, token string, data interface{}, resp interface{}) error {
+	values, err := h.structToValues(data)
+	if err != nil {
+		return err
+	}
+
+	req, err := http.NewRequestWithContext(ctx, method, h.baseURL+path, strings.NewReader(values.Encode()))
 	if err != nil {
 		return err
 	}
@@ -68,6 +78,25 @@ func (h *HttpClient) DoAuthJSON(ctx context.Context, method, path, token string,
 	req.Header.Set("Content-Type", "application/json")
 
 	return h.send(req, resp)
+}
+
+func (h *HttpClient) structToValues(data interface{}) (url.Values, error) {
+	// 先转成 map[string]interface{}
+	b, err := json.Marshal(data)
+	if err != nil {
+		return nil, err
+	}
+	m := map[string]interface{}{}
+	if err = json.Unmarshal(b, &m); err != nil {
+		return nil, err
+	}
+
+	// 转成 url.Values
+	values := url.Values{}
+	for k, v := range m {
+		values.Add(k, fmt.Sprint(v))
+	}
+	return values, nil
 }
 
 // 统一执行逻辑

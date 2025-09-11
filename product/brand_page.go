@@ -2,8 +2,6 @@ package product
 
 import (
 	"context"
-	"fmt"
-	"net/url"
 )
 
 type BrandPageRequest struct {
@@ -36,20 +34,7 @@ type Brand struct {
 // 4.1 查询品牌列表
 
 func (s *GoodsService) BrandPage(ctx context.Context, token string, req *BrandPageRequest) (resp *BrandPageResponse, err error) {
-	p := map[string]interface{}{
-		"lang":      req.Lang,
-		"pageNum":   req.PageNum,
-		"pageSize":  req.PageSize,
-		"brandId":   req.BrandId,
-		"brandName": req.BrandName,
-	}
-
-	values := url.Values{}
-	for k, v := range p {
-		values.Add(k, fmt.Sprint(v))
-	}
-
-	err = s.http.DoAuthForm(ctx, "POST", "/open/api/product/brand/listPage", token, values, &resp)
+	err = s.http.DoAuthForm(ctx, "POST", "/open/api/product/brand/listPage", token, req, &resp)
 
 	return resp, err
 }
