@@ -15,6 +15,7 @@ type DetailResponse struct {
 }
 
 type Order struct {
+	OrderSn          string       `json:"orderSn"`          // 订单号
 	Address          string       `json:"address"`          // 收货地址
 	Consignee        string       `json:"consignee"`        // 收货人
 	Phone            string       `json:"phone"`            // 收货人电话
