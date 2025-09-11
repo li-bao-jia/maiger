@@ -133,3 +133,19 @@ func TestCategoryAll(t *testing.T) {
 	}
 	fmt.Println("CategoryAll:", categoryAllResp.Data)
 }
+
+// 测试 4.9 查询京东商品价格
+
+func TestJdPrice(t *testing.T) {
+	jdPriceResp, err := goodsService.JdPrice(ctx, accessToken, &[]JdPriceRequest{
+		{
+			GoodsUrl:     "https://item.jd.com/100023408309.html",
+			ThirdGoodsNo: "100023408309",
+		},
+	})
+
+	if err != nil {
+		t.Fatalf("JdPrice error: %v", err)
+	}
+	fmt.Println("JdPrice:", jdPriceResp.Data)
+}
