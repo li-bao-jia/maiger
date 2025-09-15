@@ -28,3 +28,16 @@ func TestQueryApply(t *testing.T) {
 	}
 	fmt.Println("QueryApply:", queryApplyResp.Data)
 }
+
+// 测试 3.4 查看退款单
+
+func TestQueryRefund(t *testing.T) {
+	queryRefundResp, err := afterSaleService.QueryRefund(ctx, accessToken, &QueryRefundRequest{
+		AfterId: "375c7506-82fc-45ee-9d70-eea773f072e9",
+	})
+
+	if err != nil {
+		t.Fatalf("QueryRefund error: %v", err)
+	}
+	fmt.Println("QueryRefund:", queryRefundResp.Data)
+}
