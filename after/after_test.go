@@ -18,13 +18,13 @@ var (
 // 测试 3.1 查询售后类型以及包裹信息
 
 func TestQueryApply(t *testing.T) {
-	applyResp, err := afterSaleService.QueryApply(ctx, accessToken, &ApplyRequest{
+	queryApplyResp, err := afterSaleService.QueryApply(ctx, accessToken, &QueryApplyRequest{
 		OrderSn: "25090715411241962663",
 		SkuId:   "93da7c58-ecca-4fa9-901e-5b68bdfe1697",
 	})
 
 	if err != nil {
-		t.Fatalf("Apply error: %v", err)
+		t.Fatalf("QueryApply error: %v", err)
 	}
-	fmt.Println("Apply:", applyResp.Data)
+	fmt.Println("QueryApply:", queryApplyResp.Data)
 }
