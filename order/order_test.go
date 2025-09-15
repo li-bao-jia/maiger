@@ -134,6 +134,22 @@ func TestTrackDelivery(t *testing.T) {
 	fmt.Println("TrackDelivery:", trackDeliveryResp.Data)
 }
 
+// 测试 5.11 虚拟订单充值消息通知
+// 5.11 需要在迈戈平台配置回调地址，迈戈平台会主动请求回调地址，可以参考下面的结构体接收参数、返回参数
+
+// 推送参数
+type request struct {
+	OrderSn        string `json:"orderSn"`        // 迈戈平台返回的子订单号
+	FailReason     string `json:"failReason"`     // 充值失败原因
+	RechargeStatus string `json:"rechargeStatus"` // 充值状态：-1 充值失败 0 充值成功 1 部分充值成功
+}
+
+// 返回参数
+type response struct {
+	Code    string `json:"code"`    // 返回编码 100: 成功 其他: 错误编码
+	Message string `json:"message"` // 返回说明
+}
+
 // 测试 5.12 运费查询
 
 func TestFreight(t *testing.T) {
