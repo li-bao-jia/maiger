@@ -24,7 +24,7 @@ type ApplyResult struct {
 
 // 通过订单编号和订单商品ID获取可申请的售后类型,以及需要申请售后的包裹
 
-func (a *AfterSaleService) Apply(ctx context.Context, token string, req *ApplyRequest) (resp *ApplyResponse, err error) {
+func (a *AfterSaleService) QueryApply(ctx context.Context, token string, req *ApplyRequest) (resp *ApplyResponse, err error) {
 	err = a.http.DoAuthQuery(ctx, "GET", "/open/api/after/queryApply", token, req, &resp)
 
 	return resp, err

@@ -17,8 +17,8 @@ var (
 
 // 测试 3.1 查询售后类型以及包裹信息
 
-func TestApply(t *testing.T) {
-	applyResp, err := afterSaleService.Apply(ctx, accessToken, &ApplyRequest{
+func TestQueryApply(t *testing.T) {
+	applyResp, err := afterSaleService.QueryApply(ctx, accessToken, &ApplyRequest{
 		OrderSn: "25090715411241962663",
 		SkuId:   "93da7c58-ecca-4fa9-901e-5b68bdfe1697",
 	})
