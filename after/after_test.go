@@ -67,3 +67,17 @@ func TestSign(t *testing.T) {
 	}
 	fmt.Println("Sign:", signResp.Data)
 }
+
+// 测试 3.8 根据订单商品ID获取发货包裹信息
+
+func TestQueryLogistics(t *testing.T) {
+	queryLogisticsResp, err := afterSaleService.QueryLogistics(ctx, accessToken, &QueryLogisticsRequest{
+		OrderSn: "25090715411241962663",
+		SkuId:   "93da7c58-ecca-4fa9-901e-5b68bdfe1697",
+	})
+
+	if err != nil {
+		t.Fatalf("QueryLogistics error: %v", err)
+	}
+	fmt.Println("QueryLogistics:", queryLogisticsResp.Data)
+}
