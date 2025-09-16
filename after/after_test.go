@@ -41,3 +41,16 @@ func TestQueryRefund(t *testing.T) {
 	}
 	fmt.Println("QueryRefund:", queryRefundResp.Data)
 }
+
+// 测试 3.6 确认收货
+
+func TestSign(t *testing.T) {
+	signResp, err := afterSaleService.Sign(ctx, accessToken, &SignRequest{
+		AfterId: "0a0a011a-8add-473f-8156-5157d5d4814411",
+	})
+
+	if err != nil {
+		t.Fatalf("Sign error: %v", err)
+	}
+	fmt.Println("Sign:", signResp.Data)
+}
