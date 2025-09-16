@@ -42,6 +42,19 @@ func TestQueryRefund(t *testing.T) {
 	fmt.Println("QueryRefund:", queryRefundResp.Data)
 }
 
+// 测试 3.5 取消售后
+
+func TestCancellation(t *testing.T) {
+	cancelResp, err := afterSaleService.Cancellation(ctx, accessToken, &CancellationRequest{
+		AfterId: "0a0a011a-8add-473f-8156-5157d5d48144",
+	})
+
+	if err != nil {
+		t.Fatalf("Cancel error: %v", err)
+	}
+	fmt.Println("Cancel:", cancelResp.Data)
+}
+
 // 测试 3.6 确认收货
 
 func TestSign(t *testing.T) {
