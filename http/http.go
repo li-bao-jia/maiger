@@ -21,6 +21,26 @@ func NewHTTPClient(baseURL string) *HttpClient {
 	}
 }
 
+// 无需 token 的请求
+
+func (h *HttpClient) DoForm(ctx context.Context, method, path string, data interface{}, resp interface{}) error {
+	values, err := h.structToValues(data)
+	if err != nil {
+		return err
+	}
+
+	req, err := http.NewRequestWithContext(ctx, method, h.baseURL+path, strings.NewReader(values.Encode()))
+	if err != nil {
+		return err
+	}
+
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+	return h.send(req, resp)
+}
+
+// 需要 token 的请求
+
 func (h *HttpClient) DoAuthQuery(ctx context.Context, method, path, token string, data interface{}, resp interface{}) error {
 	values, err := h.structToValues(data)
 	if err != nil {
