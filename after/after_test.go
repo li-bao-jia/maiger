@@ -108,3 +108,18 @@ func TestFindAfterDetailV2(t *testing.T) {
 	}
 	fmt.Println("FindAfterDetail:", findAfterDetailResp.Data)
 }
+
+// 测试 3.14 查询物流轨迹（新版本）
+
+func TestQueryLogisticsTrack(t *testing.T) {
+	queryLogisticsTrackResp, err := afterSaleService.QueryLogisticsTrack(ctx, accessToken, &QueryLogisticsTrackRequest{
+		AfterId:     "ec4d992d-0b1a-486d-8d02-1701c19fba7c",
+		AfterSn:     "",
+		LogisticsNo: "YT2562935022692",
+	})
+
+	if err != nil {
+		t.Fatalf("QueryLogisticsTrack error: %v", err)
+	}
+	fmt.Println("QueryLogisticsTrack:", queryLogisticsTrackResp.Data)
+}
