@@ -94,3 +94,17 @@ func TestFindAfterDetail(t *testing.T) {
 	}
 	fmt.Println("FindAfterDetail:", findAfterDetailResp.Data)
 }
+
+// 测试 3.13 查看售后详情（新版本）
+
+func TestFindAfterDetailV2(t *testing.T) {
+	findAfterDetailResp, err := afterSaleService.FindAfterDetailV2(ctx, accessToken, &FindAfterDetailV2Request{
+		AfterId: "a1c50eae-62d7-4ddc-a208-83f024732386",
+		AfterSn: "",
+	})
+
+	if err != nil {
+		t.Fatalf("FindAfterDetail error: %v", err)
+	}
+	fmt.Println("FindAfterDetail:", findAfterDetailResp.Data)
+}
