@@ -81,3 +81,16 @@ func TestQueryLogistics(t *testing.T) {
 	}
 	fmt.Println("QueryLogistics:", queryLogisticsResp.Data)
 }
+
+// 测试 3.11 查看售后详情（旧版）
+
+func TestFindAfterDetail(t *testing.T) {
+	findAfterDetailResp, err := afterSaleService.FindAfterDetail(ctx, accessToken, &FindAfterDetailRequest{
+		AfterId: "a1c50eae-62d7-4ddc-a208-83f024732386",
+	})
+
+	if err != nil {
+		t.Fatalf("FindAfterDetail error: %v", err)
+	}
+	fmt.Println("FindAfterDetail:", findAfterDetailResp.Data)
+}
