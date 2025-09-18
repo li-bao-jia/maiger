@@ -137,6 +137,22 @@ func TestQueryLogistics(t *testing.T) {
 	fmt.Println("QueryLogistics:", queryLogisticsResp.Data)
 }
 
+// 测试 3.9 创建退款售后(新版)
+
+func TestCreateRefund(t *testing.T) {
+	createRefundResp, err := afterSaleService.CreateRefund(ctx, accessToken, &CreateRefundRequest{
+		OrderSn:      "25090715411241962663",
+		QuestionDesc: "商品描述不符",
+		Reasons:      "商品描述不符",
+		ReturnType:   1,
+	})
+
+	if err != nil {
+		t.Fatalf("CreateRefund error: %v", err)
+	}
+	fmt.Println("CreateRefund:", createRefundResp.Data)
+}
+
 // 测试 3.10 查看进度（新版）
 
 func TestAfterProgress(t *testing.T) {
