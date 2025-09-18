@@ -17,6 +17,35 @@ var (
 	orderService = NewOrderService(httpClient)
 )
 
+// 测试 5.1 订单提交
+
+func TestSubmit(t *testing.T) {
+	submitResp, err := orderService.Submit(ctx, accessToken, &SubmitRequest{
+		Name:        "张三",
+		Mobile:      "13800000000",
+		Email:       "<EMAIL>",
+		Province:    "广东省",
+		City:        "深圳市",
+		County:      "南山区",
+		Address:     "深圳南山区",
+		ZipCode:     "518000",
+		ThirdOrder:  "",
+		UserAccount: "张三",
+		SkuList: []SkuItem{
+			{
+				SkuId: "sku_id",
+				Num:   1,
+				Price: 1.0,
+			},
+		},
+	})
+
+	if err != nil {
+		t.Fatalf("Submit error: %v", err)
+	}
+	fmt.Println("Submit:", submitResp.Data)
+}
+
 // 测试 5.2 订单支付
 
 func TestPay(t *testing.T) {
