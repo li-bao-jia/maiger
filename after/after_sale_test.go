@@ -104,6 +104,25 @@ func TestSign(t *testing.T) {
 	fmt.Println("Sign:", signResp.Data)
 }
 
+// 测试 3.7 添加物流信息
+
+func TestAddLogistics(t *testing.T) {
+	addLogisticsResp, err := afterSaleService.AddLogistics(ctx, accessToken, &[]AddLogisticsRequest{
+		{
+			AfterId:      "a1c50eae-62d7-4ddc-a208-83f024732386",
+			SkuId:        "93da7c58-ecca-4fa9-901e-5b68bdfe1697",
+			ShippingName: "",
+			LogisticsNo:  "YT2562935022692",
+			SendNumber:   1,
+		},
+	})
+
+	if err != nil {
+		t.Fatalf("AddLogistics error: %v", err)
+	}
+	fmt.Println("AddLogistics:", addLogisticsResp.Data)
+}
+
 // 测试 3.8 根据订单商品ID获取发货包裹信息
 
 func TestQueryLogistics(t *testing.T) {
