@@ -179,6 +179,19 @@ func TestFindAfterDetail(t *testing.T) {
 	fmt.Println("FindAfterDetail:", findAfterDetailResp.Data)
 }
 
+// 测试 3.12 根据退款流水查询售后详情
+
+func TestQueryTradeNo(t *testing.T) {
+	queryTradeNoResp, err := afterSaleService.QueryTradeNo(ctx, accessToken, &QueryTradeNoRequest{
+		RefundFlowId: "36f8f23bb291484289bd81f50a8aa898",
+	})
+
+	if err != nil {
+		t.Fatalf("QueryTradeNo error: %v", err)
+	}
+	fmt.Println("QueryTradeNo:", queryTradeNoResp.Data)
+}
+
 // 测试 3.13 查看售后详情（新版本）
 
 func TestFindAfterDetailV2(t *testing.T) {
