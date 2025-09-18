@@ -2,6 +2,8 @@ package after
 
 import (
 	"context"
+	"fmt"
+	"testing"
 
 	"github.com/li-bao-jia/maiger/http"
 )
@@ -27,6 +29,19 @@ func TestQueryApply(t *testing.T) {
 		t.Fatalf("QueryApply error: %v", err)
 	}
 	fmt.Println("QueryApply:", queryApplyResp.Data)
+}
+
+// 测试 3.3 查询进度（废弃）
+
+func TestViewProgress(t *testing.T) {
+	viewProgressResp, err := afterSaleService.ViewProgress(ctx, accessToken, &SignRequest{
+		AfterId: "ec4d992d-0b1a-486d-8d02-1701c19fba7c",
+	})
+
+	if err != nil {
+		t.Fatalf("ViewProgress error: %v", err)
+	}
+	fmt.Println("ViewProgress:", viewProgressResp.Data)
 }
 
 // 测试 3.4 查看退款单
