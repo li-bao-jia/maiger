@@ -31,6 +31,27 @@ func TestQueryApply(t *testing.T) {
 	fmt.Println("QueryApply:", queryApplyResp.Data)
 }
 
+// 测试 3.2 创建售后单
+
+func TestCreate(t *testing.T) {
+	createResp, err := afterSaleService.Create(ctx, accessToken, &[]CreateRequest{
+		{
+			OrderSn:      "25090715411241962663",
+			SkuId:        "93da7c58-ecca-4fa9-901e-5b68bdfe1697",
+			ReturnType:   1,
+			Reasons:      "商品缺少",
+			QuestionDesc: "商品缺少",
+			PicList:      []string{},
+			SupplierList: []SupplierList{}, //创建退款的时候supplierList不用填写，其他申请必须填写
+		},
+	})
+
+	if err != nil {
+		t.Fatalf("Create error: %v", err)
+	}
+	fmt.Println("Create:", createResp.Data)
+}
+
 // 测试 3.3 查询进度（废弃）
 
 func TestViewProgress(t *testing.T) {
