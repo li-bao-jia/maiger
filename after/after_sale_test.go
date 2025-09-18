@@ -97,6 +97,19 @@ func TestQueryLogistics(t *testing.T) {
 	fmt.Println("QueryLogistics:", queryLogisticsResp.Data)
 }
 
+// 测试 3.10 查看进度（新版）
+
+func TestAfterProgress(t *testing.T) {
+	afterProgressResp, err := afterSaleService.AfterProgress(ctx, accessToken, &AfterProgressRequest{
+		AfterId: "a1c50eae-62d7-4ddc-a208-83f024732386",
+	})
+
+	if err != nil {
+		t.Fatalf("AfterProgress error: %v", err)
+	}
+	fmt.Println("AfterProgress:", afterProgressResp.Data)
+}
+
 // 测试 3.11 查看售后详情（旧版）
 
 func TestFindAfterDetail(t *testing.T) {
