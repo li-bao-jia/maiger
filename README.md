@@ -24,8 +24,8 @@
 
 ## 安装 Installation
 
-```bash
-  go get github.com/li-bao-jia/maiger
+```
+go get github.com/li-bao-jia/maiger@latest
 ```
 
 ## 快速开始 Quick Start
