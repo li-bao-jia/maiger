@@ -90,10 +90,10 @@ SDK 包含以下主要服务模块：
 
 #### 方法列表
 
-| 方法                                                        | 描述     | 示例                                                          |
-|-----------------------------------------------------------|--------|-------------------------------------------------------------|
-| `GetToken(ctx, clientId, clientSecret)`                   | 获取访问令牌 | `client.Token.GetToken(ctx, "id", "secret")`                |
-| `RefreshToken(ctx, clientId, clientSecret, refreshToken)` | 刷新访问令牌 | `client.Token.RefreshToken(ctx, "id", "secret", "refresh")` |
+| 方法                                                        | 描述     |
+|-----------------------------------------------------------|--------|
+| `GetToken(ctx, clientId, clientSecret)`                   | 获取访问令牌 |
+| `RefreshToken(ctx, clientId, clientSecret, refreshToken)` | 刷新访问令牌 |
 
 #### 使用示例
 
@@ -114,18 +114,18 @@ refreshResp, err := client.Token.RefreshToken(ctx, "your_client_id", "your_clien
 
 #### 方法列表
 
-| 方法                                 | 描述                 | 示例                                                                              |
-|------------------------------------|--------------------|---------------------------------------------------------------------------------|
-| `BrandPage(ctx, token, req)`       | 4.1 查询品牌列表         | `client.Product.BrandPage(ctx, token, &product.BrandPageRequest{})`             |
-| `CategoryPage(ctx, token, req)`    | 4.2 查询分类列表         | `client.Product.CategoryPage(ctx, token, &product.CategoryPageRequest{})`       |
-| `GoodsPage(ctx, token, req)`       | 4.3 查询商品列表(按SKU维度) | `client.Product.GoodsPage(ctx, token, &product.GoodsPageRequest{})`             |
-| `GoodsDetail(ctx, token, req)`     | 4.4 查询商品详情         | `client.Product.GoodsDetail(ctx, token, &product.GoodsDetailRequest{})`         |
-| `GoodsDetailSpec(ctx, token, req)` | 4.5 查询商品描述         | `client.Product.GoodsDetailSpec(ctx, token, &product.GoodsDetailSpecRequest{})` |
-| `Region(ctx, token, req)`          | 4.6 查询区域信息         | `client.Product.Region(ctx, token, &product.RegionRequest{})`                   |
-| `GoodsPriceStock(ctx, token, req)` | 4.7 批量查询价格库存       | `client.Product.GoodsPriceStock(ctx, token, &product.GoodsPriceStockRequest{})` |
-| `CategoryAll(ctx, token, req)`     | 4.8 查询全量分类信息       | `client.Product.CategoryAll(ctx, token, &product.CategoryAllRequest{})`         |
-| `JdPrice(ctx, token, req)`         | 4.9 查询京东商品价格       | `client.Product.JdPrice(ctx, token, &[]product.JdPriceRequest{})`               |
-| `Similar(ctx, token, req)`         | 4.10 查询相似商品        | `client.Product.Similar(ctx, token, &product.SimilarRequest{})`                 |
+| 方法                                 | 描述                 | 
+|------------------------------------|--------------------|
+| `BrandPage(ctx, token, req)`       | 4.1 查询品牌列表         | 
+| `CategoryPage(ctx, token, req)`    | 4.2 查询分类列表         |
+| `GoodsPage(ctx, token, req)`       | 4.3 查询商品列表(按SKU维度) |
+| `GoodsDetail(ctx, token, req)`     | 4.4 查询商品详情         |
+| `GoodsDetailSpec(ctx, token, req)` | 4.5 查询商品描述         |
+| `Region(ctx, token, req)`          | 4.6 查询区域信息         |
+| `GoodsPriceStock(ctx, token, req)` | 4.7 批量查询价格库存       |
+| `CategoryAll(ctx, token, req)`     | 4.8 查询全量分类信息       |
+| `JdPrice(ctx, token, req)`         | 4.9 查询京东商品价格       |
+| `Similar(ctx, token, req)`         | 4.10 查询相似商品        |
 
 #### 使用示例
 
@@ -152,22 +152,22 @@ detailResp, err := client.Product.GoodsDetail(ctx, token, detailReq)
 
 #### 方法列表
 
-| 方法                                | 描述                | 示例                                                                        |
-|-----------------------------------|-------------------|---------------------------------------------------------------------------|
-| `Submit(ctx, token, req)`         | 5.1 提交订单          | `client.Order.Submit(ctx, token, &order.SubmitRequest{})`                 |
-| `Pay(ctx, token, req)`            | 5.2 订单支付          | `client.Order.Pay(ctx, token, &order.PayRequest{})`                       |
-| `Cancel(ctx, token, req)`         | 5.3 取消未支付订单       | `client.Order.Cancel(ctx, token, &order.CancelRequest{})`                 |
-| `Confirm(ctx, token, req)`        | 5.4 确认收货          | `client.Order.Confirm(ctx, token, &order.ConfirmRequest{})`               |
-| `ConfirmBatch(ctx, token, req)`   | 5.5 批量确认收货        | `client.Order.ConfirmBatch(ctx, token, &[]string{"order1", "order2"})`    |
-| `Track(ctx, token, req)`          | 5.6 查询订单配送信息      | `client.Order.Track(ctx, token, &order.TrackRequest{})`                   |
-| `Detail(ctx, token, req)`         | 5.7 订单详情          | `client.Order.Detail(ctx, token, &order.DetailRequest{})`                 |
-| `Status(ctx, token, req)`         | 5.8 订单状态查询        | `client.Order.Status(ctx, token, &[]string{"order1", "order2"})`          |
-| `CardNumber(ctx, token, req)`     | 5.9 查看虚拟订单卡券、卡密   | `client.Order.CardNumber(ctx, token, &order.CardNumberRequest{})`         |
-| `TrackDelivery(ctx, token, req)`  | 5.10 根据物流单号查询配送信息 | `client.Order.TrackDelivery(ctx, token, &order.TrackDeliveryRequest{})`   |
-| `提供接口，配置后被动接收虚拟订单充值消息`            | 5.11 虚拟订单充值消息通知   | `---`                                                                     |
-| `Freight(ctx, token, req)`        | 5.12 运费查询         | `client.Order.Freight(ctx, token, &order.FreightRequest{})`               |
-| `CheckAreaLimit(ctx, token, req)` | 5.13 查询商品区域限制     | `client.Order.CheckAreaLimit(ctx, token, &order.CheckAreaLimitRequest{})` |
-| `BoDetail(ctx, token, req)`       | 5.14 主订单查询详情      | `client.Order.BoDetail(ctx, token, &order.BoDetailRequest{})`             |
+| 方法                                | 描述                |
+|-----------------------------------|-------------------|
+| `Submit(ctx, token, req)`         | 5.1 提交订单          |
+| `Pay(ctx, token, req)`            | 5.2 订单支付          |
+| `Cancel(ctx, token, req)`         | 5.3 取消未支付订单       |
+| `Confirm(ctx, token, req)`        | 5.4 确认收货          |
+| `ConfirmBatch(ctx, token, req)`   | 5.5 批量确认收货        |
+| `Track(ctx, token, req)`          | 5.6 查询订单配送信息      |
+| `Detail(ctx, token, req)`         | 5.7 订单详情          |
+| `Status(ctx, token, req)`         | 5.8 订单状态查询        |
+| `CardNumber(ctx, token, req)`     | 5.9 查看虚拟订单卡券、卡密   |
+| `TrackDelivery(ctx, token, req)`  | 5.10 根据物流单号查询配送信息 |
+| `提供接口，配置后被动接收虚拟订单充值消息`            | 5.11 虚拟订单充值消息通知   |
+| `Freight(ctx, token, req)`        | 5.12 运费查询         |
+| `CheckAreaLimit(ctx, token, req)` | 5.13 查询商品区域限制     |
+| `BoDetail(ctx, token, req)`       | 5.14 主订单查询详情      |
 
 #### 使用示例
 
@@ -201,22 +201,22 @@ payResp, err := client.Order.Pay(ctx, token, payReq)
 
 #### 方法列表
 
-| 方法                                     | 描述                        | 示例                                                                                      |
-|----------------------------------------|---------------------------|-----------------------------------------------------------------------------------------|
-| `QueryApply(ctx, token, req)`          | 3.1 查询售后类型以及包裹信息          | `client.AfterSale.QueryApply(ctx, token, &after.QueryApplyRequest{})`                   |
-| `Create(ctx, token, req)`              | 3.2 创建售后单                 | `client.AfterSale.Create(ctx, token, &[]after.CreateRequest{})`                         |
-| `ViewProgress(ctx, token, req)`        | 3.3 查询售后进度 ⚠️(废弃)         | `client.AfterSale.ViewProgress(ctx, token, &[]after.ViewProgressRequest{})`             |
-| `QueryRefund(ctx, token, req)`         | 3.4 查看退款单                 | `client.AfterSale.QueryRefund(ctx, token, &after.QueryRefundRequest{})`                 |
-| `Cancellation(ctx, token, req)`        | 3.5 取消售后                  | `client.AfterSale.Cancellation(ctx, token, &after.CancellationRequest{})`               |
-| `Sign(ctx, token, req)`                | 3.6 确认收货                  | `client.AfterSale.Sign(ctx, token, &after.SignRequest{})`                               |
-| `AddLogistics(ctx, token, req)`        | 3.7 添加物流信息                | `client.AfterSale.AddLogistics(ctx, token, &[]after.AddLogisticsRequest{})`             |
-| `QueryLogistics(ctx, token, req)`      | 3.8 根据订单商品ID获取发货包裹信息      | `client.AfterSale.QueryLogistics(ctx, token, &after.QueryLogisticsRequest{})`           |
-| `CreateRefund(ctx, token, req)`        | 3.9 创建退款售后(新版)            | `client.AfterSale.CreateRefund(ctx, token, &after.CreateRefundRequest{})`               |
-| `AfterProgress(ctx, token, req)`       | 3.10 查询售后进度(新版)           | `client.AfterSale.AfterProgress(ctx, token, &after.AfterProgressRequest{})`             |
-| `FindAfterDetail(ctx, token, req)`     | 3.11 查看售后详情(旧版)           | `client.AfterSale.FindAfterDetail(ctx, token, &after.FindAfterDetailRequest{})`         |
-| `QueryTradeNo(ctx, token, req)`        | 3.12 根据退款流水查询售后详情（定制商城专用） | `client.AfterSale.QueryTradeNo(ctx, token, &after.QueryTradeNoRequest{})`               |
-| `FindAfterDetailV2(ctx, token, req)`   | 3.13 查看售后详情(新版)           | `client.AfterSale.FindAfterDetailV2(ctx, token, &after.FindAfterDetailV2Request{})`     |
-| `QueryLogisticsTrack(ctx, token, req)` | 3.14 查询物流轨迹(新版)           | `client.AfterSale.QueryLogisticsTrack(ctx, token, &after.QueryLogisticsTrackRequest{})` |
+| 方法                                     | 描述                        |
+|----------------------------------------|---------------------------|
+| `QueryApply(ctx, token, req)`          | 3.1 查询售后类型以及包裹信息          |
+| `Create(ctx, token, req)`              | 3.2 创建售后单                 |
+| `ViewProgress(ctx, token, req)`        | 3.3 查询售后进度 ⚠️(废弃)         |
+| `QueryRefund(ctx, token, req)`         | 3.4 查看退款单                 |
+| `Cancellation(ctx, token, req)`        | 3.5 取消售后                  |
+| `Sign(ctx, token, req)`                | 3.6 确认收货                  |
+| `AddLogistics(ctx, token, req)`        | 3.7 添加物流信息                |
+| `QueryLogistics(ctx, token, req)`      | 3.8 根据订单商品ID获取发货包裹信息      |
+| `CreateRefund(ctx, token, req)`        | 3.9 创建退款售后(新版)            |
+| `AfterProgress(ctx, token, req)`       | 3.10 查询售后进度(新版)           |
+| `FindAfterDetail(ctx, token, req)`     | 3.11 查看售后详情(旧版)           |
+| `QueryTradeNo(ctx, token, req)`        | 3.12 根据退款流水查询售后详情（定制商城专用） |
+| `FindAfterDetailV2(ctx, token, req)`   | 3.13 查看售后详情(新版)           |
+| `QueryLogisticsTrack(ctx, token, req)` | 3.14 查询物流轨迹(新版)           |
 
 #### 使用示例
 
@@ -247,12 +247,12 @@ createResp, err := client.AfterSale.Create(ctx, token, &createReq)
 
 #### 方法列表
 
-| 方法                          | 描述                   | 示例                                                                |
-|-----------------------------|----------------------|-------------------------------------------------------------------|
-| `Query(ctx, token, req)`    | 8.1 消息通知查询接口 ⚠️ (旧版) | `client.Message.Query(ctx, token, &message.QueryRequest{})`       |
-| `QueryV4(ctx, token, req)`  | 8.2 消息通知查询接口 v4 版本   | `client.Message.QueryV4(ctx, token, &message.QueryV4Request{})`   |
-| `Delete(ctx, token, req)`   | 9.1 删除推送消息 ⚠️ (旧版)   | `client.Message.Delete(ctx, token, &message.DeleteRequest{})`     |
-| `DeleteV4(ctx, token, req)` | 9.2 删除推送消息 v4 版本     | `client.Message.DeleteV4(ctx, token, &message.DeleteV4Request{})` |
+| 方法                          | 描述                   |
+|-----------------------------|----------------------|
+| `Query(ctx, token, req)`    | 8.1 消息通知查询接口 ⚠️ (旧版) |
+| `QueryV4(ctx, token, req)`  | 8.2 消息通知查询接口 v4 版本   |
+| `Delete(ctx, token, req)`   | 9.1 删除推送消息 ⚠️ (旧版)   |
+| `DeleteV4(ctx, token, req)` | 9.2 删除推送消息 v4 版本     |
 
 #### 消息类型说明
 
