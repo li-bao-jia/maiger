@@ -699,7 +699,7 @@ for _, sku := range detailResp.Data.GoodsSkuBaseInfoVoList {
 
 ### 广告
 
-- 定制：如果您有定制需求、各种软件开发需求，或者您响封装某些SDK，请通过以下方式联系我
+- 定制：如果您有定制需求、各种软件开发需求，或者您想封装某些SDK，请通过以下方式联系我
 
 ### 联系方式
 
