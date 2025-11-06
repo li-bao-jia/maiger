@@ -696,6 +696,23 @@ for _, sku := range detailResp.Data.GoodsSkuBaseInfoVoList {
 }
 ```
 
+## ❤️ 支持与赞助
+
+如果您觉得这个项目有帮助，请考虑赞助它的开发。非常感谢您的支持！
+
+<table>
+  <tr>
+    <td><img src="/assets/wechat.jpg" width="200" alt="WeChat Pay" /></td>
+    <td><img src="/assets/alipay.jpg" width="200" alt="Alipay" /></td>
+  </tr>
+</table>
+
+### 我们的赞助商
+
+非常感谢所有赞助商的慷慨支持！
+
+-
+
 
 ### 广告
 
